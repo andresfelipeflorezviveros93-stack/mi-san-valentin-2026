@@ -1,43 +1,59 @@
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>San Valentín 💖</title>
+<title>Para Tatiana 💖</title>
+
 <style>
 body{
-    background: #ffc0cb;
+    margin:0;
+    padding:0;
+    background:linear-gradient(to bottom,#ff9ecf,#ffcce6);
     display:flex;
     justify-content:center;
     align-items:center;
     height:100vh;
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     overflow:hidden;
 }
 
+/* Tarjeta */
 .card{
     background:white;
     padding:40px;
-    border-radius:20px;
+    border-radius:25px;
     text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    box-shadow:0 15px 40px rgba(0,0,0,0.3);
+    position:relative;
+    z-index:10;
 }
 
-h1,h2{
-    color:#ff4d88;
+h1{
+    color:#ff2e8b;
+}
+
+h2{
+    color:#ff4da6;
 }
 
 button{
-    padding:10px 20px;
+    padding:12px 25px;
     border:none;
-    border-radius:20px;
+    border-radius:30px;
     font-size:18px;
     cursor:pointer;
     margin:10px;
+    transition:0.3s;
 }
 
 #si{
-    background:#ff4d88;
+    background:#ff2e8b;
     color:white;
+}
+
+#si:hover{
+    transform:scale(1.1);
 }
 
 #no{
@@ -45,28 +61,76 @@ button{
     color:white;
     position:absolute;
 }
+
+/* Corazones */
+.heart{
+    position:absolute;
+    color:red;
+    font-size:20px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall{
+    0%{
+        transform:translateY(-10vh);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+}
 </style>
 </head>
 
 <body>
 
 <div class="card">
-    <h1>Hola Evelyn 💕</h1>
+    <h1>Hola Tatiana 💕</h1>
     <h2>¿Quieres ser mi San Valentín? 💖</h2>
     <button id="si" onclick="aceptar()">Sí 💘</button>
     <button id="no" onmouseover="mover()">No 😢</button>
 </div>
 
+<!-- Audio romántico -->
+<audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+</audio>
+
 <script>
 function aceptar(){
-    alert("Sabía que dirías que sí 😍💖");
+    document.body.innerHTML = `
+    <div style="display:flex;justify-content:center;align-items:center;height:100vh;
+    background:linear-gradient(to bottom,#ff9ecf,#ffcce6);font-family:Arial;text-align:center;">
+        <div>
+            <h1 style="color:#ff2e8b;">Sabía que dirías que sí 😍💖</h1>
+            <h2 style="color:#ff4da6;">Te prometo el mejor San Valentín de tu vida 🌹✨</h2>
+        </div>
+    </div>
+    `;
 }
 
 function mover(){
     var btn = document.getElementById("no");
-    btn.style.top = Math.random()*400 + "px";
-    btn.style.left = Math.random()*400 + "px";
+    btn.style.top = Math.random()*500 + "px";
+    btn.style.left = Math.random()*500 + "px";
 }
+
+/* Generar corazones */
+function crearCorazones(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },5000);
+}
+
+setInterval(crearCorazones,300);
 </script>
 
 </body>
