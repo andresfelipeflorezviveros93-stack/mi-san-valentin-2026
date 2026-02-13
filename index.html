@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>San Valentín 💖</title>
+<style>
+body{
+    background: #ffc0cb;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    font-family: Arial;
+    overflow:hidden;
+}
+
+.card{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+h1,h2{
+    color:#ff4d88;
+}
+
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
+    font-size:18px;
+    cursor:pointer;
+    margin:10px;
+}
+
+#si{
+    background:#ff4d88;
+    color:white;
+}
+
+#no{
+    background:gray;
+    color:white;
+    position:absolute;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Hola Evelyn 💕</h1>
+    <h2>¿Quieres ser mi San Valentín? 💖</h2>
+    <button id="si" onclick="aceptar()">Sí 💘</button>
+    <button id="no" onmouseover="mover()">No 😢</button>
+</div>
+
+<script>
+function aceptar(){
+    alert("Sabía que dirías que sí 😍💖");
+}
+
+function mover(){
+    var btn = document.getElementById("no");
+    btn.style.top = Math.random()*400 + "px";
+    btn.style.left = Math.random()*400 + "px";
+}
+</script>
+
+</body>
+</html>
